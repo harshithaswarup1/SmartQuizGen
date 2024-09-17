@@ -1,0 +1,51 @@
+<ion-content [fullscreen]="true" class="ion-padding content-background">
+  <div class="background-image">
+    <ion-grid no-padding style="width:100vw;height: 100vh;">
+      <ion-row no-padding>
+        <ion-col size="12" size-sm="12" size-md="10" size-lg="4" offset-md="1" offset-lg="4">
+
+          <!-- Toolbar -->
+          <ion-toolbar class="custom-toolbar" style="width: 100%; border-radius: 0 0 15px 15px; padding: 10px;">
+            <ion-title class="center-title" style="font-size: 22px; text-align: center; color: white;">Score</ion-title>
+            <ion-buttons slot="end">
+              <ion-icon (click)="presentPopover($event)" name="person-circle-outline" style="font-size: 28px; color: white; margin-left: 10px;"></ion-icon>
+              <ion-icon name="log-out-outline" (click)="logout()" style="font-size: 28px; color: white; margin-left: 10px;"></ion-icon>
+            </ion-buttons>
+          </ion-toolbar>
+
+          <!-- Score Container -->
+          <ion-grid style="width: 100%; margin-top: 20px;">
+            <ion-row no-padding class="ion-justify-content-center">
+              <ion-col size="12">
+                <div class="score-container">
+                  <div class="score-description">Your Performance</div>
+                  
+                  <ion-row style="margin-top: 2%;" no-padding class="ion-align-items-center" *ngFor="let subject of subjects">
+                    <ion-col size="6">
+                      <div class="score-item">
+                        <div class="score-title" style="font-size: large;">{{ formatSubjectName(subject.name) }}</div>
+                      </div>
+                    </ion-col>
+                    <ion-col size="6">
+                      <ng-container *ngIf="subject.score === undefined || subject.score === null">
+                        <a (click)="startNewQuiz()" class="take-test-button">Take Test</a>             
+                      </ng-container>
+                      <ng-container *ngIf="subject.score !== undefined && subject.score !== null">
+                        <div class="score-value" style="font-size: medium;">
+                          {{ subject.score }}/{{ subject.totalques }}
+                        </div>
+                      </ng-container>
+                    </ion-col>
+                    <ion-col size="12">
+                    </ion-col>
+                  </ion-row>                  
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

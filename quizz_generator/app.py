@@ -4,13 +4,13 @@ from dotenv import load_dotenv
 import json
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-from azure_blob_access import AzureBlobStorage
-from extract_raw_content import BlobFileExtractor
-from azure_blob_to_openai import AzureFileReader
-from llm import MultiChoiceQA, Flashcards
+from connectors.azure_blob_access import AzureBlobStorage
+from utils.extract_raw_content import BlobFileExtractor
+from connectors.chunker import AzureFileReader
+from conversation.llm import MultiChoiceQA, Flashcards
 import json
 import random
-from utils import random_selection
+from utils.utils import random_selection
 
 load_dotenv()
 
