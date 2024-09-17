@@ -1,0 +1,76 @@
+<ion-content [fullscreen]="true" class="ion-padding content-background">
+  <div class="background-image">
+    <ion-grid no-padding style="width:100vw;height: 100vh;">
+      <ion-row no-padding>
+        <ion-col size="12" size-sm="12" size-md="10" size-lg="4" offset-md="1" offset-lg="4">
+            <ion-toolbar class="custom-toolbar" style="width: 100%; border-radius: 0 0 15px 15px; padding: 10px;">
+              <ion-buttons slot="start">
+                <ion-icon name="arrow-back" (click)="prevpage()" style="font-size: 24px; margin-left: 1%;"></ion-icon>
+              </ion-buttons>
+              <ion-title class="center-title" style="font-size: 22px; text-align: center; color: white;">Flash Cards</ion-title>
+              <ion-buttons slot="end">
+                <ion-icon (click)="presentPopover($event)" name="person-circle-outline" style="font-size: 28px; color: white; margin-left: 10px;"></ion-icon>
+                <ion-icon name="log-out-outline" (click)="logout()" style="font-size: 28px; color: white; margin-left: 10px;"></ion-icon>
+              </ion-buttons>
+            </ion-toolbar>
+
+          <ion-grid style="width: 100%; padding: 0; height: calc(100vh - 180px); overflow-y: auto; margin-top: 8%;">
+            <ion-row no-padding>
+              <ion-col size="12">
+                <div *ngIf="flashcards.length > 0" class="flip-card-container">
+                  <div class="flip-card">
+                    <div class="flip-card-inner" [ngClass]="{'flipped': flashcards[index]?.flipped}">
+                      <div class="flip-card-front">
+                        <ion-card class="full-width-card rounded-card" style="height: 200%;">
+                          <ion-card-content>
+                            <p style="text-align: center; font-size: x-large;margin-top: 10%;">{{ flashcards[index]?.title }}</p>
+                            <div class="button-container" style="text-align: center;">
+                              <ion-button class="custom-button" (click)="toggleDescription(index)">
+                                {{ flashcards[index]?.flipped ? 'Hide Description' : 'Show Description' }}
+                              </ion-button>
+                            </div>
+                          </ion-card-content>
+                        </ion-card>
+                      </div>
+
+                      <div class="flip-card-back">
+                        <ion-card class="full-width-card rounded-card" style="margin-top: 6%;">
+                          <ion-card-content>
+                            <p style="text-align: center;font-size: large;">{{ flashcards[index]?.description }}</p>
+                      
+                            <!-- Buttons now visible after flipping the card -->
+                            <div class="button-container" style="text-align: center; margin-top: 5%;">
+                              <ion-button *ngIf="!flashcards[index]?.known" class="custom-button learning-button" (click)="markAsLearning(index)">
+                                I am learning
+                              </ion-button>
+                              <ion-button *ngIf="!flashcards[index]?.known" class="custom-button known-button" (click)="markAsKnown(index)">
+                                I Know
+                              </ion-button>
+                            </div>
+                          </ion-card-content>
+                        </ion-card>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+          <div style="padding: 15px; margin-top: -50%;">
+            <ion-progress-bar [value]="progress / 100" style="--background: white; --progress-background: #629afa;"></ion-progress-bar>
+            <p style="color: white;text-align: center;font-size: large;">
+              You have mastered {{ knownWordsCount }} of {{ totallen }} words
+            </p>
+          </div>
+
+          <div style="font-size: 18px; color: #999; margin-top: 3%;text-align: center;">
+            <ion-icon name="home-outline" style="color: white;"></ion-icon>&nbsp;&nbsp;<a (click)="startNewQuiz()" class="take-test-button" style="color: white;">Back To Home</a>       
+          </div>
+                  
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
