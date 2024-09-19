@@ -1,0 +1,60 @@
+<ion-content [fullscreen]="true" class="ion-padding content-background">
+  <div class="background-image">
+    <ion-grid no-padding style="width:100vw; height:100vh;">
+      <ion-row no-padding>
+        <ion-col size="12" size-sm="12" size-md="10" size-lg="4" offset-md="1" offset-lg="4">
+
+          <!-- Toolbar -->
+          <ion-toolbar class="custom-toolbar" style="width: 100%; border-radius: 0 0 15px 15px; padding: 10px; background-color: #4CAF50;">
+            <ion-title class="center-title" style="font-size: 22px; text-align: center; color: white;">Words Learned</ion-title>
+            <ion-buttons slot="end">
+              <ion-icon (click)="presentPopover($event)" name="person-circle-outline" style="font-size: 26px; color: white; margin-left: 10px;"></ion-icon>
+              <ion-icon name="log-out-outline" (click)="logout()" style="font-size: 26px; color: white; margin-left: 10px;"></ion-icon>
+            </ion-buttons>
+          </ion-toolbar>
+
+          <!-- Score Container -->
+          <ion-grid style="width: 100%; margin-top: 20px;">
+            <ion-row no-padding class="ion-justify-content-center">
+              <ion-col size="12">
+                <div class="score-container" style="background-color: #fff; border-radius: 15px; padding: 20px; text-align: center; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                  <div class="score-description" style="font-size: 20px; font-weight: bold; color: #333;">Your Progress</div>
+
+                  <!-- Iterate over subjects -->
+                  <ion-row style="margin-top: 2%;" no-padding class="ion-align-items-center" *ngFor="let subject of subjects">
+                    <ion-col size="6">
+                      <div class="score-item">
+                        <div class="score-title" style="font-size: large;">{{ subject.name }}</div>
+                      </div>
+                    </ion-col>
+                    <ion-col size="6">
+                      <ng-container *ngIf="subject.wordslearnt === undefined || subject.wordslearnt === null">
+                        <a (click)="startNewQuiz()" class="take-test-button">Learn More Words</a>             
+                      </ng-container>
+                      <ng-container *ngIf="subject.wordslearnt !== undefined && subject.wordslearnt !== null">
+                        <div class="score-value" style="font-size: medium;">
+                          {{ subject.wordslearnt }} words learnt
+                        </div>
+                      </ng-container>
+                    </ion-col>
+                  </ion-row>
+
+                  <!-- Motivational Message -->
+                  <div style="font-size: 18px; color: #999; margin-top: 3%;">
+                    Keep up the great work!
+                  </div>
+
+                  <!-- Back to Home -->
+                  <div style="font-size: 18px; color: #999; margin-top: 3%;">
+                    <ion-icon name="home-outline"></ion-icon>&nbsp;&nbsp;<a (click)="startNewQuiz()" class="take-test-button">Back To Home</a>       
+                  </div>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

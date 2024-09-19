@@ -1,0 +1,45 @@
+<ion-content [fullscreen]="true" class="ion-padding content-background">
+  <div class="background-image">
+    <ion-grid no-padding style="width:100vw;height: 100vh;">
+      <ion-row no-padding>
+        <ion-col size="12" size-sm="12" size-md="10" size-lg="4" offset-md="1" offset-lg="4">
+
+          
+
+          <ion-toolbar class="custom-toolbar" style="width: 100%; border-radius: 0 0 15px 15px; padding: 10px;">
+            <ion-buttons slot="start">
+              <ion-icon name="arrow-back" (click)="prevpage()" style="font-size: 24px;margin-left: 1%;"></ion-icon>
+            </ion-buttons>
+            <ion-title class="center-title" style="font-size: 22px; text-align: center; color: white;">Select Your Subject</ion-title>
+            <ion-buttons slot="end">
+              <ion-icon  (click)="presentPopover($event)" name="person-circle-outline" style="font-size: 28px; color: white; margin-left: 10px;"></ion-icon>
+              <ion-icon name="log-out-outline" (click)="logout()" style="font-size: 28px; color: white; margin-left: 10px;"></ion-icon>
+            </ion-buttons>
+          </ion-toolbar>
+                              
+          <ion-grid style="width: 100%; padding: 15px;">
+            <ion-row no-padding>
+              <ion-col size="12" size-sm="12" size-md="6" size-lg="12" *ngFor="let subject of subjects">
+                <ion-card (click)="selectedSubject(subject.id)" class="light-card" 
+                style="
+                  margin-bottom: 15px; 
+                  box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
+                  border-radius: 12px; 
+                  overflow: hidden;
+                  transition: transform 0.3s, box-shadow 0.3s;
+                "
+                class="hover-effect">
+                  <ion-card-header style="display: flex; align-items: center;">
+                    <ion-icon name="book-outline" style="font-size: 35px; margin-right: 10px; color: #629afa;"></ion-icon>
+                    <ion-card-title style="font-size: 20px; margin: 0;">{{ subject.name }}</ion-card-title>
+                  </ion-card-header>
+                </ion-card>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

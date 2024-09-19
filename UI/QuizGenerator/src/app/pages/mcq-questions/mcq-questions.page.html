@@ -1,0 +1,38 @@
+<ion-content [fullscreen]="true" class="ion-padding content-background">
+  <div class="background-image">
+    <ion-grid no-padding style="width:100vw;height: 100vh;">
+      <ion-row no-padding>
+        <ion-col size="12" size-sm="12" size-md="10" size-lg="4" offset-md="1" offset-lg="4">
+                    
+          <ion-toolbar class="custom-toolbar" style="width: 100%; border-radius: 0 0 15px 15px; padding: 10px;">
+            <ion-title class="center-title" style="font-size: 22px; text-align: center; color: white;">MCQs</ion-title>
+            <ion-buttons slot="end">
+              <ion-icon  (click)="presentPopover($event)" name="person-circle-outline" style="font-size: 28px; color: white; margin-left: 10px;"></ion-icon>
+              <ion-icon name="log-out-outline" (click)="logout()" style="font-size: 28px; color: white; margin-left: 10px;"></ion-icon>
+            </ion-buttons>
+          </ion-toolbar>
+
+          <ion-grid style="width: 100%;">
+            <ion-row no-padding>
+              <ion-col size="12" size-sm="12" size-md="6" size-lg="12">
+                <h2 style="color: white;">Q {{ index + 1 }}: {{ getCurrentQuestion().question }}</h2>
+
+                <ion-list style="--background: black; --color: white;">
+                  <ion-radio-group [(ngModel)]="selectedOption">
+                    <ion-item *ngFor="let option of getCurrentQuestion()?.options" class="custom-item">
+                      <ion-label>{{ option.answer }}</ion-label>
+                      <ion-radio slot="start" [value]="option.answer" style="--color: white;"></ion-radio>
+                    </ion-item>
+                  </ion-radio-group>
+                </ion-list>
+
+                <a class="next-link" style="  text-transform: none;" (click)="nextQuestion()" *ngIf="index < questions.length - 1">Next</a>          
+                <ion-button expand="block" class="curved-button submit-button" (click)="submitAnswers()" *ngIf="index === questions.length - 1" style="margin-top: 3%;" >  Submit </ion-button>              
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
