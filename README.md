@@ -10,17 +10,17 @@ The Smart Quiz Generation App is designed to help students efficiently prepare f
 
 ## Features
 ### Quiz Mode
-•	Upon logging in, Students can select a subject to initiate a quiz.
-•	Each quiz comprises 20 MCQs pertinent to the chosen subject. Students are required to answer all questions, as skipping is not permitted.
-•	After submitting responses, the app calculates the total score and presents a detailed scorecard for each subject.
-•	Students have the opportunity to retake a quiz on a different subject, allowing for continued practice and learning.
+1. Upon logging in, Students can select a subject to initiate a quiz.
+2. Each quiz comprises 20 MCQs pertinent to the chosen subject. Students are required to answer all questions, as skipping is not permitted.
+3. After submitting responses, the app calculates the total score and presents a detailed scorecard for each subject.
+4. Students have the opportunity to retake a quiz on a different subject, allowing for continued practice and learning.
 
 
 ### Flashcards
-•	Similar to the quiz mode, Students can select a subject to access flashcards for review.
-•	Interactive Flashcards: Each flashcard displays a term or concept with a "Show Description" button. Clicking this button reveals a comprehensive description of the term.
-•	Students can mark each flashcard as either "I Know" or "I Am Learning":
-• "I Know": Marks the card as mastered, removes it from the list, and increments the count of mastered words.
-•	"I Am Learning": Retains the card in the list for ongoing review and practice.
-•	A summary of the number of words mastered for each subject is also shown.
+1. Similar to the quiz mode, Students can select a subject to access flashcards for review.
+2. Interactive Flashcards: Each flashcard displays a term or concept with a "Show Description" button. Clicking this button reveals a comprehensive description of the term.
+3. Students can mark each flashcard as either "I Know" or "I Am Learning".
+4. "I Know": Marks the card as mastered, removes it from the list, and increments the count of mastered words.
+5. "I Am Learning": Retains the card in the list for ongoing review and practice.
+6. A summary of the number of words mastered for each subject is also shown.
 
